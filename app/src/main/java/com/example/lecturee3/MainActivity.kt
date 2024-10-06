@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-// лекция пять - ресайклеры, адаптер, вью холдер
 
+// лекция 6 -
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container, ListFragment())
@@ -30,7 +30,6 @@ fun Fragment.pushFragment(counter: Int) {
         .addToBackStack(null)
         .commit()
 }
-
 
 
 //fun addFragment(fragment: Fragment) {
