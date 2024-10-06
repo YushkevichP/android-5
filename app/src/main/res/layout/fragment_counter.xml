@@ -6,6 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Toolbar
+        android:id="@+id/toolbar_my"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_dynamic_neutral60"
+        android:navigationIcon="@android:drawable/ic_media_previous"
+        android:padding="16dp"
+        android:title="Toolbar and List of Items"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </Toolbar>
+
     <TextView
         android:id="@+id/text_view"
         android:layout_width="match_parent"
