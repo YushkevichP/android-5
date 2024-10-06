@@ -31,6 +31,15 @@ fun Fragment.pushFragment(counter: Int) {
         .commit()
 }
 
+fun Fragment.pushSecondFragment() {
+    (requireActivity() as MainActivity)
+        .supportFragmentManager
+        .beginTransaction()
+        .replace(R.id.container, SecondFragment())
+        .addToBackStack(null)
+        .commit()
+}
+
 
 //fun addFragment(fragment: Fragment) {
 //    supportFragmentManager

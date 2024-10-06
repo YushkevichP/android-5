@@ -1,16 +1,20 @@
 package com.example.lecturee3
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.lecturee3.databinding.FragmentFirstBinding
-import com.example.lecturee3.databinding.FragmentListBinding
+import com.example.lecturee3.databinding.FragmentSecondBinding
 
-class FirstFragment : Fragment() {
+class SecondFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentSecondBinding? = null
     private val binding
         get() = requireNotNull(_binding) {
             "OMG Oo"
@@ -21,7 +25,7 @@ class FirstFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentFirstBinding.inflate(inflater, container, false)
+        return FragmentSecondBinding.inflate(inflater, container, false)
             .also {
                 this._binding = it
             }
@@ -31,19 +35,22 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        var textResult = ""
 
         with(binding) {
 
-            parentFragmentManager.setFragmentResultListener(
-                "res", viewLifecycleOwner
-            ) { _, bundle ->
-                textResult.text = bundle.getString("key")
+            editText.addTextChangedListener {
+
+                textResult = it?.toString() ?: ""
+//           одно и то же     textResult = it?.toString().orEmpty()
+
+
             }
-
             button.setOnClickListener {
-
-                pushSecondFragment()
+                parentFragmentManager.setFragmentResult(
+                    "res", bundleOf("key" to textResult)
+                )
+                parentFragmentManager.popBackStack()
             }
         }
     }
