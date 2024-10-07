@@ -43,8 +43,6 @@ class FirstFragment : Fragment() {
             }
 
 
-
-
 // -----нриже код для примера с передачей чисел
 //            parentFragmentManager.setFragmentResultListener(
 //                "res", viewLifecycleOwner
@@ -53,8 +51,19 @@ class FirstFragment : Fragment() {
 //            }
 
             button.setOnClickListener {
+
+                val isChecked = textResult.text
+                    .takeIf { it.isNotEmpty() }?.toString()?.toBoolean() ?: false
+                //првоерка что какое-то значчение передается, аесли его нет, то изначально фолс. == равносильно if else
+//                val isChecked = if (textResult.text.isEmpty()){
+//                    false
+//                } else {
+//                    textResult.text.toString().toBoolean()
+//                }
+
+
                 //pushSecondFragment()
-                pushSwitchFragment(textResult.text.toString().toBoolean())
+                pushSwitchFragment(isChecked)
             }
         }
     }
