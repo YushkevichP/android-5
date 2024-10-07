@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.lecturee3.databinding.FragmentFirstBinding
 import com.example.lecturee3.databinding.FragmentListBinding
@@ -36,14 +37,24 @@ class FirstFragment : Fragment() {
         with(binding) {
 
             parentFragmentManager.setFragmentResultListener(
-                "res", viewLifecycleOwner
+                "SWITCH_KEY", viewLifecycleOwner
             ) { _, bundle ->
-                textResult.text = bundle.getString("key")
+                textResult.text = bundle.getBoolean("key_switch").toString()
             }
 
-            button.setOnClickListener {
 
-                pushSecondFragment()
+
+
+// -----нриже код для примера с передачей чисел
+//            parentFragmentManager.setFragmentResultListener(
+//                "res", viewLifecycleOwner
+//            ) { _, bundle ->
+//                textResult.text = bundle.getString("key")
+//            }
+
+            button.setOnClickListener {
+                //pushSecondFragment()
+                pushSwitchFragment(textResult.text.toString().toBoolean())
             }
         }
     }
